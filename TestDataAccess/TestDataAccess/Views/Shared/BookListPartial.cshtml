@@ -1,0 +1,78 @@
+﻿@using TestDataAccess.Entity
+@using TestDataAccess.Utils
+@model List<TestDataAccess.Entity.Book>
+<div>
+    @{
+        if (Model != null)
+        {
+            foreach (Book book in Model)
+            {
+                <div class="book" bookId="@book.Id">
+                    <a class="book-img" href="@Url.Action("Detail", "Book", new {bookId = book.Id})">
+                        <img src="@Url.Content("~/Content/images/" + book.ImageFileName)"/>
+                    </a>
+                    <div class="title"><a href="@Url.Action("Detail", "Book", new {bookId = book.Id})">@book.Title</a></div>
+                    <div class="author">@book.Author.Name</div>
+                    <div class="price">
+                        @{
+                            if (book.GetCurrentDiscout() != null)
+                            {
+                                <span class="old-price">$@book.Price</span>
+                                <span class="current-price">$@C.DataFormatter.RoundTo2Decimal((book.Price*(1 - book.GetCurrentDiscout().Percent/100f)))</span>
+                            }
+                            else
+                            {
+                                <span class="current-price">$@book.Price</span>
+                            }
+                        }
+                    </div>
+                    <div value="@C.DataFormatter.RoundTo2Decimal(book.Rating)" class="rate" data-toggle="tooltip" title="@C.DataFormatter.RoundTo2Decimal(book.Rating)">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="count">
+                        <span class="fa fa-eye"></span>@book.ViewCount &nbsp;
+                        <span class="fa fa-heart"></span>@book.LoveCount &nbsp;
+                        <span class="fa fa-comment"></span>@book.CommentCount &nbsp;
+                        <span class="fa fa-shopping-cart"></span>@book.CartCount &nbsp;
+                        <span class="fa fa-money"></span>@book.BuyCount &nbsp;
+                    </div>
+                    @*                <div value="0" class="rate-it">*@
+                    @*                    Your rate:*@
+                    @*                    <span value="1" class="fa fa-star-o"></span>*@
+                    @*                    <span value="2" class="fa fa-star-o"></span>*@
+                    @*                    <span value="3" class="fa fa-star-o"></span>*@
+                    @*                    <span value="4" class="fa fa-star-o"></span>*@
+                    @*                    <span value="5" class="fa fa-star-o"></span>*@
+                    @*                </div>*@
+                    <div>
+                        @{
+                            if (C.LoveService.IsCurrentUserLovedBook(book) == null)
+                            {
+                                <a fromUrl="@Request.Url" bookId="@book.Id" onclick="addBookToLove(this)" href="javascript:void(0)"><i class="fa fa-heart"></i><span class="text">Love</span></a>
+                            }
+                            else
+                            {
+                                <a fromUrl="@Request.Url" bookId="@book.Id" onclick="removeBookFromLove(this)" href="javascript:void(0)"><i class="fa fa-heart"></i><span class="text">UnLove</span></a>
+                            }
+                        }
+                        &nbsp;
+                        @{
+                            if (C.CartService.IsCurrentUserCartedBook(book) == null)
+                            {
+                                <a fromUrl="@Request.Url" bookId="@book.Id" onclick="addBookToCart(this)" href="javascript:void(0)"><i class="fa fa-shopping-cart"></i><span class="text">Add to cart</span></a>
+                            }
+                            else
+                            {
+                                <a fromUrl="@Request.Url" bookId="@book.Id" onclick="removeBookFromCart(this)" href="javascript:void(0)"><i class="fa fa-shopping-cart"></i><span class="text">Remove from cart</span></a>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>

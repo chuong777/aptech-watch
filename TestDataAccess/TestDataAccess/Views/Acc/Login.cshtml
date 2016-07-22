@@ -1,0 +1,31 @@
+﻿@{ Layout = "~/Views/Shared/_ALayout.cshtml"; }
+@{
+    if (Session["user"] != null)
+    {
+        Response.Redirect(Url.Action("Index", "Home"));
+    }
+}
+@model TestDataAccess.Models.LoginViewM
+<div>
+    @{
+        if (TempData["message"] != null)
+        {
+            <h1>@TempData["message"]</h1>
+        }
+    }
+    @using (Html.BeginForm("Login", "Acc", new {fromUrl = TempData["fromUrl"]}, FormMethod.Post, null))
+    {
+        @Html.ValidationSummary(true)
+        <div>
+            @Html.LabelFor(model => model.UserName)
+            @Html.TextBoxFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Password)
+            @Html.TextBoxFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+        <button type="submit" value="submit">Login</button>
+    }
+</div>

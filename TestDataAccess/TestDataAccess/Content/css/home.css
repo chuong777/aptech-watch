@@ -1,0 +1,9 @@
+﻿#book-category {
+    float: left;
+  max-width: 200px;
+}
+
+#books-by-category {
+    float: left;
+    margin-left: 20px;
+}

@@ -1,0 +1,27 @@
+﻿@using TestDataAccess.Entity
+@using TestDataAccess.Utils
+@model ICollection<Comment>
+<div>
+    @{
+        if (Model != null)
+        {
+            foreach (Comment comment in Model)
+             {
+                 <div class="comment-item">
+                     <div>
+                         <span>@comment.ShortMessage</span>
+                         <div value="@comment.Rate" class="rate" data-toggle="tooltip" title="@comment.Rate">
+                             <span></span>
+                             <span></span>
+                             <span></span>
+                             <span></span>
+                             <span></span>
+                         </div>
+                     </div>
+                     <div>Comment by @comment.User.RealName, on @C.DataFormatter.GetDateString(comment.Time)</div>
+                     <div>@comment.Message</div>
+                 </div>
+             }
+        }
+    }
+</div>

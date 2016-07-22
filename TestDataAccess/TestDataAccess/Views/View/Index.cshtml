@@ -1,0 +1,14 @@
+﻿@model List<TestDataAccess.Entity.Book>
+@{
+    TempData["message"] = "Please login before see your view";
+    TempData["fromUrl"] = Request.Url;
+    Layout = "~/Views/Shared/_LLayout.cshtml";
+}
+@{
+    ViewBag.Title = "Your View";
+}
+<h1>List of books you viewed</h1>
+<div>
+    @Html.Partial("BookListPartial", Model)
+</div>
+

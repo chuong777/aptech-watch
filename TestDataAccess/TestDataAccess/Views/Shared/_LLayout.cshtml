@@ -1,0 +1,49 @@
+﻿@using TestDataAccess.Utils
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/global/css")
+    @{
+        if (!C.UserService.IsUserLogin())
+        {
+            Response.Redirect(Url.Action("Login", "Acc"));
+        }
+    }
+</head>
+<body>
+<div id="popup">
+    <p dir="popup-message">Message popup</p>
+</div>
+<div id="top-menu">
+    <a href="#">Hi, @C.UserService.GetCurrentUser().RealName</a>
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    @Html.ActionLink("Sign out", "Logout", "Acc")
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    <a href="@Url.Action("Index", "Bill")">
+        <span class="fa fa-money">&nbsp;</span><span id="billCount">@C.UserService.GetCurrentUser().Bills.Count</span>
+    </a>
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    <a href="@Url.Action("Index", "Cart")">
+        <span class="fa fa-shopping-cart">&nbsp;</span><span id="cartCount">@C.UserService.GetCurrentUser().Carts.Count</span>
+    </a>
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    <a href="@Url.Action("Index", "Comment")">
+        <span class="fa fa-comment">&nbsp;</span><span id="commentCount">@C.UserService.GetCurrentUser().Comments.Count</span>
+    </a>
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    <a href="@Url.Action("Index", "Love")">
+        <span class="fa fa-heart">&nbsp;</span><span id="loveCount">@C.UserService.GetCurrentUser().Loves.Count</span>
+    </a>
+    <span>&nbsp;&nbsp;&nbsp;</span>
+    <a href="@Url.Action("Index", "View")">
+        <span class="fa fa-eye">&nbsp;</span><span id="viewCount">@C.UserService.GetCurrentUser().Views.Count</span>
+    </a>
+</div>
+@RenderBody()
+@Scripts.Render("~/global/js")
+@RenderSection("scripts", required: false)
+</body>
+</html>

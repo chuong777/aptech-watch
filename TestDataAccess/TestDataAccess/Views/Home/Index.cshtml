@@ -1,0 +1,50 @@
+﻿@using TestDataAccess.Entity
+@{ Layout = "~/Views/Shared/_ALayout.cshtml"; }
+@{
+    ViewBag.Title = "Home Page";
+    List<Category> categories = ViewBag.categories;
+    IDictionary<Category, List<Book>> booksByCategory = ViewBag.booksByCategory;
+}
+<link rel="stylesheet" href="@Url.Content("~/Content/css/home.css")"/>
+
+<div id="top-search">
+    <input/>
+    <span>Category</span>
+    <select>
+        <option>a</option>
+        <option>a</option>
+    </select>
+    <span>Author</span>
+    <select>
+        <option>a</option>
+        <option>a</option>
+    </select>
+    <button>
+        <span class="fa fa-search" ></span></button>
+</div>
+<aside id="book-category">
+    <h1>Category</h1>
+    @{
+        if (categories != null)
+        {
+            foreach (var category in categories)
+            {
+                <div><a href="#category-@category.Id">@category.Name</a></div>
+            }
+        }
+    }
+</aside>
+<section id="books-by-category">
+    @{
+        if (booksByCategory != null)
+        {
+            foreach (var booksOfCategory in booksByCategory)
+            {
+                <div categoryId="@booksOfCategory.Key.Id" class="category-item" id="category-@booksOfCategory.Key.Id">
+                    <h2>@booksOfCategory.Key.Name</h2>
+                    @Html.Partial("BookListPartial", booksOfCategory.Value)
+                </div>
+            }
+        }
+    }
+</section>

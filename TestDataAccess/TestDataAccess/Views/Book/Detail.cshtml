@@ -1,0 +1,116 @@
+﻿@using TestDataAccess.Entity
+@using TestDataAccess.Utils
+@model TestDataAccess.Entity.Book
+@{ Layout = "~/Views/Shared/_ALayout.cshtml"; }
+@{ ViewBag.Title = "Detail"; }
+<link rel="stylesheet" href="@Url.Content("~/Content/css/book-detail.css")"/>
+
+<section id="book-detail">
+<div class="book-image">
+    <img src="@Url.Content("~/Content/images/" + Model.ImageFileName)"/>
+</div>
+<div class="book-info">
+    <h1 class="title">@Model.Title</h1>
+    <div class="author">@Model.Author.Name</div>
+    <div class="status">@(Model.Quantity > 0 ? "Avaiable" : "Unavaiable")</div>
+    <div class="price">
+        @{
+            if (Model.GetCurrentDiscout() != null)
+            {
+                <span class="old-price">$@Model.Price</span>
+                <span class="current-price">$@C.DataFormatter.RoundTo2Decimal((Model.Price*(1 - Model.GetCurrentDiscout().Percent/100f)))</span>
+            }
+            else
+            {
+                <span class="current-price">$@Model.Price</span>
+            }
+        }
+    </div>
+
+    <div value="@C.DataFormatter.RoundTo2Decimal(Model.Rating)" class="rate" data-toggle="tooltip" title="@C.DataFormatter.RoundTo2Decimal(Model.Rating)" style="display: inline-block;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div>
+        @{
+            if (C.LoveService.IsCurrentUserLovedBook(Model) == null)
+            {
+                <a fromUrl="@Request.Url" bookId="@Model.Id" onclick="addBookToLove(this)" href="javascript:void(0)"><i class="fa fa-heart"></i><span class="text">Love</span></a>
+            }
+            else
+            {
+                <a fromUrl="@Request.Url" bookId="@Model.Id" onclick="removeBookFromLove(this)" href="javascript:void(0)"><i class="fa fa-heart"></i><span class="text">UnLove</span></a>
+            }
+        }
+        &nbsp;
+        @{
+            if (C.CartService.IsCurrentUserCartedBook(Model) == null)
+            {
+                <a fromUrl="@Request.Url" bookId="@Model.Id" onclick="addBookToCart(this)" href="javascript:void(0)"><i class="fa fa-shopping-cart"></i><span class="text">Add to cart</span></a>
+            }
+            else
+            {
+                <a fromUrl="@Request.Url" bookId="@Model.Id" onclick="removeBookFromCart(this)" href="javascript:void(0)"><i class="fa fa-shopping-cart"></i><span class="text">Remove from cart</span></a>
+            }
+        }
+    </div>
+
+    <div class="description">@Model.Description</div>
+    <div class="category"><span>Category: </span><span>@Model.Category.Name</span></div>
+    <div class="tag">
+        <div>Tag:</div>
+        @{
+            if (Model.BookTags == null)
+            {
+                <div>No tag...</div>
+            }
+            else
+            {
+                <ul>
+                    @foreach (var tag in Model.BookTags)
+                    {
+                    <li>@tag.Tag.Name</li>
+                    }
+                </ul>
+            }
+        }
+    </div>
+    <div class="publish-time">Published Date: @C.DataFormatter.GetDateString(Model.PublishTime)</div>
+    <div class="total-page">Total page: @Model.TotalPage</div>
+    <div class="count">
+        <span class="fa fa-eye"></span>@Model.ViewCount &nbsp;
+        <span class="fa fa-heart"></span>@Model.LoveCount &nbsp;
+        <span class="fa fa-comment"></span>@Model.CommentCount &nbsp;
+        <span class="fa fa-shopping-cart"></span>@Model.CartCount &nbsp;
+        <span class="fa fa-money"></span>@Model.BuyCount &nbsp;
+    </div>
+</div>
+<div class="book-relative">
+    <h1>Other books you may like</h1>
+    @Html.Partial("BookListPartial", (List<Book>)ViewBag.relatedBooks)
+</div>
+<div fromUrl="@Request.Url" bookId="@Model.Id" class="book-your-comment">
+    <h1>Your comment</h1>
+    <span>Short message:</span><input class="short-message" value="Short message"/>
+    <div value="0" class="rate-it">
+        Your rate:
+        <span value="1" class="fa fa-star-o"></span>
+        <span value="2" class="fa fa-star-o"></span>
+        <span value="3" class="fa fa-star-o"></span>
+        <span value="4" class="fa fa-star-o"></span>
+        <span value="5" class="fa fa-star-o"></span>
+    </div>
+    <span>Message:</span><input class="message" value="Message"/>
+    <div>
+        <button onclick="commentForABook(this)">Publish</button>
+    </div>
+</div>
+<div class="book-comment">
+    <h1>Comment</h1>
+    @Html.Partial("CommentListPartial", Model.Comments)
+</div>
+</section>

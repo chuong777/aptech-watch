@@ -1,0 +1,27 @@
+﻿@{ Layout = "~/Views/Shared/_ALayout.cshtml"; }
+@using TestDataAccess.Entity
+@model TestDataAccess.Models.SearchM
+   @{
+       List<Category> categories = ViewBag.categories;
+       List<Author> authors = ViewBag.authors;
+   }
+
+@using (Ajax.BeginForm("SearchAll", "Search", new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "get",
+    OnFailure = "onSearchFail()",
+    UpdateTargetId = "result"
+}))
+{
+    <div id="top-search">
+        @Html.TextBoxFor(m => m.Keyword)
+        <span>Category</span>
+        @Html.DropDownListFor(n => categories, new SelectList(categories, "Name", "Name", "All"))
+        <span>Author</span>
+        @Html.DropDownListFor(n => authors, new SelectList(authors, "Name", "Name", "All"))
+        <button type="submit" value="search"><span class="fa fa-search" ></span></button>
+    </div>
+    <div id="result"></div>
+}
+

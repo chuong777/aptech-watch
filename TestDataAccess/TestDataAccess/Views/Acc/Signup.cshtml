@@ -1,0 +1,36 @@
+﻿@{Layout = "~/Views/Shared/_ALayout.cshtml"; }
+@{ 
+    if (Session["user"] != null)
+    {
+        Response.Redirect(Url.Action("Index", "Home"));
+    }
+}
+@model TestDataAccess.Models.SignupViewM
+<div>
+    @{ 
+        if (ViewBag.message != null)
+        {
+            <h1>@ViewBag.message</h1>
+        }
+    }
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <div>
+            @Html.LabelFor(model => model.UserName)
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Password)
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.RealName)
+            @Html.EditorFor(model => model.RealName)
+            @Html.ValidationMessageFor(model => model.RealName)
+        </div>
+        <button type="submit" value="submit">Signup</button>
+    }
+</div>
