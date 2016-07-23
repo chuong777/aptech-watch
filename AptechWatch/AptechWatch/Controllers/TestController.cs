@@ -17,7 +17,7 @@ namespace AptechWatch.Controllers
         {
             try
             {
-                C.BrandService.Delete(4);
+                C.BrandService.Delete(3);
             }
             catch (NotFoundWithIdEx e)
             {
