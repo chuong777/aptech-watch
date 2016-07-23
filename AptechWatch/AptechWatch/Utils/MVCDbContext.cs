@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Web;
-using TestDataAccess.Entity;
+using AptechWatch.Entity;
 
-namespace TestDataAccess.Utils
+namespace AptechWatch.Utils
 {
     public class MVCDbContext : DbContext
     {
@@ -14,22 +15,23 @@ namespace TestDataAccess.Utils
         {
         }
 
-        public DbSet<Author> Authors
+
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Watch> Watches { get; set; }
+
+        public DbSet<T> GetRightDbSet<T>() where T : BaseEntity
         {
-            get; set; 
+            if (typeof(T) == typeof(Brand))
+            {
+                return Brands as DbSet<T>;
+            }
+            if (typeof(T) == typeof(Watch))
+            {
+                return Watches as DbSet<T>;
+            }
+            return null;
         }
-        public DbSet<Bill> Bills { get; set; }
-        public DbSet<Book> Books { get; set; }
-        public DbSet<BookTag> BookTags { get; set; }
-        public DbSet<Buy> Buys { get; set; }
-        public DbSet<Cart> Carts { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Discount> Discounts { get; set; }
-        public DbSet<Love> Loves { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<View> Views { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

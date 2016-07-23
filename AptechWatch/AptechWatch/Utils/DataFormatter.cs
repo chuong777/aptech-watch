@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Authentication.ExtendedProtection;
 using System.Web;
 
-namespace TestDataAccess.Utils
+namespace AptechWatch.Utils
 {
     public class DataFormatter
     {

@@ -196,8 +196,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Entity\Brand.cs" />
+    <Compile Include="Entity\Watch.cs" />
+    <Compile Include="Exception\BaseException.cs" />
+    <Compile Include="Exception\NotFoundWithIdEx.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,6 +212,10 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Dao\BaseDao.cs" />
+    <Compile Include="Dao\BrandDao.cs" />
+    <Compile Include="Service\BaseService.cs" />
+    <Compile Include="Service\BrandService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\AjaxResult.cs" />
     <Compile Include="Utils\C.cs" />
@@ -275,6 +286,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
