@@ -198,8 +198,12 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Dao\AdminDao.cs" />
+    <Compile Include="Dao\CustomerDao.cs" />
+    <Compile Include="Entity\Admin.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\Brand.cs" />
+    <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\Watch.cs" />
     <Compile Include="Exception\BaseException.cs" />
     <Compile Include="Exception\NotFoundWithIdEx.cs" />
@@ -211,8 +215,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\BrandDao.cs" />
+    <Compile Include="Service\AdminService.cs" />
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Service\BrandService.cs" />
+    <Compile Include="Service\CustomerService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\AjaxResult.cs" />
     <Compile Include="Utils\C.cs" />
