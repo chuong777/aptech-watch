@@ -12,9 +12,9 @@ namespace AptechWatch.Entity
         public DateTime Time { get; set; }
         [Required]
         public int Customer { get; set; }
-        public String Name { get; set; }
-        public String Phone { get; set; }
-        public String Address { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         public Order()

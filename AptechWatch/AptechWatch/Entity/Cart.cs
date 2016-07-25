@@ -8,13 +8,14 @@ namespace AptechWatch.Entity
 {
     public class Cart : BaseEntity
     {
-        [Required]
-        public int CustomerId { get; set; }
+       [Required]
+       public int CustomerId { get; set; }
        [Required]
        public int WatchId { get; set; }
 
         public Cart()
         {
+
         }
     }
 }

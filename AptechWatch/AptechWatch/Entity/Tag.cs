@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,7 +8,8 @@ namespace AptechWatch.Entity
 {
     public class Tag : BaseEntity
     {
-        public String Title { get; set; }
+        [Required]
+        public string Title { get; set; }
         public ICollection<WatchTag> WatchTags { get; set; }
 
         public Tag()

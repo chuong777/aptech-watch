@@ -8,8 +8,8 @@ namespace AptechWatch.Entity
     public class Comment: BaseEntity
     {
         public float Rate { get; set; }
-        public String Content { get; set; }
-        public String Title { get; set; }
+        public string Content { get; set; }
+        public string Title { get; set; }
         public int ParentComment { get; set; }
         public Customer Customer;
 

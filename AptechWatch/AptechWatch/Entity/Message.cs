@@ -13,8 +13,8 @@ namespace AptechWatch.Entity
         [Required]
         public DateTime Time { get; set; }
         [Required]
-        public String Content { get; set; }
-        public Boolean IsAdmin { get; set; }
+        public string Content { get; set; }
+        public bool IsAdmin { get; set; }
 
         public Message()
         {
