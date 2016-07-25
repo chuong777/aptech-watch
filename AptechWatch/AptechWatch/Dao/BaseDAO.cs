@@ -17,12 +17,24 @@ namespace AptechWatch.Dao
 
         public T FindById(int id)
         {
-            return (from a in DbSet where a.Id == id select a).SingleOrDefault();
+            return (from item in DbSet where item.Id == id select item).SingleOrDefault();
+        }
+
+        public ICollection<T> FindAll()
+        {
+            var q = (from item in DbSet select item).ToList();
+            return q;
         }
 
         public T Insert(T entity)
         {
             DbSet.Add(entity);
+            C.DbContext.SaveChanges();
+            return entity;
+        }
+
+        public T Update(T entity)
+        {
             C.DbContext.SaveChanges();
             return entity;
         }
