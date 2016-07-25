@@ -5,7 +5,19 @@ using System.Web;
 
 namespace AptechWatch.Entity
 {
-    public class Tag
+    public class Tag : BaseEntity
     {
+        public String Title { get; set; }
+        public ICollection<WatchTag> WatchTags { get; set; }
+
+        public Tag()
+        {
+
+        }
+
+        public Tag(string title)
+        {
+            Title = title;
+        }
     }
 }
