@@ -9,17 +9,17 @@ namespace AptechWatch.Entity
     public class Customer : BaseEntity
     {
         [Required]
-        public String RealName { get; set;  }
+        public string RealName { get; set;  }
         [Required]
-        public String UserName { get; set; }
+        public string UserName { get; set; }
         [Required]
-        public String Email { get; set; }
+        public string Email { get; set; }
         [Required]
-        public String Password { get; set; }
+        public string Password { get; set; }
         [Required]
-        public String Address { get; set; }
+        public string Address { get; set; }
         [Required]
-        public String Phone { get; set; }
+        public string Phone { get; set; }
         public int PhotoType { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<ViewList> ViewLists { get; set; }

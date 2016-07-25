@@ -13,7 +13,7 @@ namespace AptechWatch.Entity
         [Required]
         public int GeneralId { get; set; }
         [Required]
-        public String Url { get; set; }
+        public string Url { get; set; }
 
         public PhotoUrl()
         {

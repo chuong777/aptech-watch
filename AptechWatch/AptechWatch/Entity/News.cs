@@ -9,7 +9,7 @@ namespace AptechWatch.Entity
     public class News: BaseEntity
     {
         [Required]
-        public String Content { get; set; }
+        public string Content { get; set; }
         [Required]
         public  DateTime Date { get; set; }
         [Required]

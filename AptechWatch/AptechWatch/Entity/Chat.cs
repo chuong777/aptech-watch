@@ -13,10 +13,10 @@ namespace AptechWatch.Entity
         [Required]
         public int Admin { get; set; }
         [Required]
-        public String Name { get; set; }
-        public String Email { get; set; }
-        public String Phone { get; set; }
-        public List<String> Message { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public List<string> Message { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
         public virtual List<Message> Messages { get; set; }

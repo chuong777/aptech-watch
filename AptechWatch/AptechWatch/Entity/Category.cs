@@ -9,7 +9,7 @@ namespace AptechWatch.Entity
     public class Category : BaseEntity
     {
         [Required]
-        public String Title { get; set; }
+        public string Title { get; set; }
 
         public Category()
         {
