@@ -6,7 +6,7 @@ using System.Web;
 
 namespace AptechWatch.Entity
 {
-    public class Category
+    public class Category : BaseEntity
     {
         [Required]
         public String Title { get; set; }

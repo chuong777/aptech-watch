@@ -5,7 +5,10 @@ using System.Web;
 
 namespace AptechWatch.Entity
 {
-    public class Admin
+    public class Admin : BaseEntity
     {
+        public Admin()
+        {
+        }
     }
 }

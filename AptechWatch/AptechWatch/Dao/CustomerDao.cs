@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AptechWatch.Entity;
 
 namespace AptechWatch.Dao
 {
-    public class CustomerDao
+    public class CustomerDao : BaseDao<Customer>
     {
     }
 }
