@@ -339,6 +339,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\uploads\admin\" />
+    <Folder Include="Content\images\uploads\news\" />
+    <Folder Include="Content\images\uploads\watch\" />
     <Folder Include="libs\bootstrap\" />
     <Folder Include="libs\font-awesome\" />
     <Folder Include="libs\jquery-ui\" />
