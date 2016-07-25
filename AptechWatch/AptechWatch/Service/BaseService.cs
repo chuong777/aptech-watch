@@ -22,9 +22,19 @@ namespace AptechWatch.Service
             return BaseDao.FindById(id);
         }
 
+        public ICollection<T> FindAll()
+        {
+            return BaseDao.FindAll();
+        }
+
         public T Insert(T entity)
         {
             return BaseDao.Insert(entity);
+        }
+
+        public T Update(T entity)
+        {
+            return BaseDao.Update(entity);
         }
 
         public T Delete(T entity)

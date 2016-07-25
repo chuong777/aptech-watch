@@ -6,7 +6,7 @@ using AptechWatch.Entity;
 
 namespace AptechWatch.Dao
 {
-    public class AdminDao : BaseDao<Admin>
+    public class ChatDao : BaseDao<Chat>
     {
     }
 }

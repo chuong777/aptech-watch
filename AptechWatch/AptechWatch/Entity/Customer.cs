@@ -6,20 +6,40 @@ using System.Web;
 
 namespace AptechWatch.Entity
 {
-    public class Customer:BaseEntity
+    public class Customer : BaseEntity
     {
         [Required]
-        public string Realname { get; set; }
+        public String RealName { get; set;  }
         [Required]
-        public string Username { get; set; }
+        public String UserName { get; set; }
         [Required]
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public virtual ICollection<Watch> Views { get; set; }
-        public virtual ICollection<Watch> Wishes { get; set; }
-        public virtual ICollection<Watch> Carts { get; set; }
-        public virtual ICollection<Watch> Chats { get; set; }
+        public String Email { get; set; }
+        [Required]
+        public String Password { get; set; }
+        [Required]
+        public String Address { get; set; }
+        [Required]
+        public String Phone { get; set; }
+        public int PhotoType { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<ViewList> ViewLists { get; set; }
+        public virtual ICollection<Chat> Chats { get; set; }
+        public virtual ICollection<WishList> WishLists { get; set; }
+
+        public Customer()
+        {
+            
+        }
+
+        public Customer(string realName, string userName, string password, string address, string email, string phone, int photoType)
+        {
+            RealName = realName;
+            UserName = userName;
+            Password = password;
+            Address = address;
+            Email = email;
+            Phone = phone;
+            PhotoType = photoType;
+        }
     }
 }
