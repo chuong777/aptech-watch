@@ -26,14 +26,13 @@ namespace AptechWatch.Entity
 
         }
 
-        public Admin(int role, string realName, string userName, string password, string emaill, int photoType, int photoUrl)
+        public Admin(bool isSuperAdmin, string realName, string userName, string password, string emaill, int photoType, int photoUrl)
         {
-            Role = role;
-            RealName = realName;
-            UserName = userName;
+            IsSuperAdmin = isSuperAdmin;
+            Realname = realName;
+            Username = userName;
             Password = password;
-            Emaill = emaill;
-            PhotoType = photoType;
+            Email = emaill;
             PhotoUrl = photoUrl;
         }
     }

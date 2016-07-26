@@ -1,0 +1,18 @@
+﻿@model AptechWatch.Models.UserModel
+@{
+    ViewBag.Title = "Login";
+}
+@using (Html.BeginForm("Login", "Customer"))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.Username)
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control", placeholder = "Username" })
+        @Html.ValidationMessageFor(x => x.Username)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Password)
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "Password" })
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+    <button type="submit" class="btn btn-default">Login</button>
+}

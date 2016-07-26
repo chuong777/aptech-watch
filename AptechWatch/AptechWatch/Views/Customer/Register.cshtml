@@ -1,0 +1,42 @@
+﻿@model AptechWatch.Models.UserModel
+@{
+    ViewBag.Title = "Register";
+}
+@using (Html.BeginForm("Register", "Customer"))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.Username)
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control", placeholder = "Username" })
+        @Html.ValidationMessageFor(x => x.Username)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Password)
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.ConfirmPassword)
+        @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ConfirmPassword)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Realname)
+        @Html.TextBoxFor(x => x.Realname, new { @class = "form-control", placeholder = "Real name" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "Email", type = "email" })
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Address)
+        @Html.TextBoxFor(x => x.Address, new {@class = "form-control", placeholder = "Address"})
+        @Html.ValidationMessageFor(x => x.Address)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Phone)
+        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", placeholder = "Phone" })
+        @Html.ValidationMessageFor(x => x.Phone)
+    </div>
+    <button type="submit" class="btn btn-default">Register</button>
+}
