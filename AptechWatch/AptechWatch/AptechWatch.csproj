@@ -200,6 +200,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\WatchController.cs" />
     <Compile Include="Dao\AdminDao.cs" />
     <Compile Include="Dao\CartDao.cs" />
     <Compile Include="Dao\CategoryDao.cs" />
@@ -244,6 +245,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\WatchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\BrandDao.cs" />
@@ -323,6 +325,9 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Register.cshtml" />
     <None Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Watch\Index.cshtml" />
+    <Content Include="Views\Watch\CreateWatch.cshtml" />
+    <Content Include="Views\Watch\EditWatch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -352,7 +357,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>12122</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -22,13 +22,6 @@ namespace AptechWatch.Service
                      select a).FirstOrDefault();
             return result;
         }
-        public Watch FindWatchById(int id)
-        {
-            var result = (from a in C.DbContext.Watches
-                     where a.Id == id
-                     select a).FirstOrDefault();
-            return result;
-        }
 
         public Watch FindWatchByNameAndId(string name,int id)
         {
@@ -38,10 +31,10 @@ namespace AptechWatch.Service
             return result;
         }
 
-        public List<Watch> FindAllWatchesByCategory(int id)
+        public List<Watch> FindAllWatchesByCategory(int categoryId)
         {
             var result = (from a in C.DbContext.Watches
-                          where a.CategoryId == id
+                          where a.CategoryId == categoryId
                           select a).ToList();
             return result;
         } 
@@ -77,7 +70,7 @@ namespace AptechWatch.Service
 
         public bool DeleteWatch(int id)
         {
-            Watch checkWatch = FindWatchById(id);
+            Watch checkWatch = this.FindById(id);
             if (checkWatch != null)
             {
                 C.DbContext.Watches.Remove(checkWatch);
